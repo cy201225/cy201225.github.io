@@ -318,7 +318,7 @@
 <p>-1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包<br>-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：</p>
 <blockquote>
 <p> ```var flag = false;</p>
-<p>``` ​     $(select).on(‘tap’, function () {</p>
+<p>``` $(select).on(‘tap’, function () {</p>
 </blockquote>
 <p>  ​                if (!flag) {</p>
 <p> ​                    flag = true;</p>

@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>time | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   ```var flag = false; ``` ​">
+  <meta name="description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   ```var flag = false; ``` $(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="time">
 <meta property="og:url" content="http://yoursite.com/2018/01/18/time/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   ```var flag = false; ``` ​">
-<meta property="og:updated_time" content="2018-01-24T11:45:14.081Z">
+<meta property="og:description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   ```var flag = false; ``` $(">
+<meta property="og:updated_time" content="2018-01-24T12:14:06.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="time">
-<meta name="twitter:description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   ```var flag = false; ``` ​">
+<meta name="twitter:description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   ```var flag = false; ``` $(">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -181,7 +181,7 @@
 <p>-1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包<br>-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：</p>
 <blockquote>
 <p> ```var flag = false;</p>
-<p>``` ​     $(select).on(‘tap’, function () {</p>
+<p>``` $(select).on(‘tap’, function () {</p>
 </blockquote>
 <p>  ​                if (!flag) {</p>
 <p> ​                    flag = true;</p>
