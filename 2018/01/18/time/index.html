@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>time | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   flag 1234567891011121314151">
+  <meta name="description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下： flag 123456789101112131415161">
 <meta property="og:type" content="article">
 <meta property="og:title" content="time">
 <meta property="og:url" content="http://yoursite.com/2018/01/18/time/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   flag 1234567891011121314151">
-<meta property="og:updated_time" content="2018-01-24T12:15:17.186Z">
+<meta property="og:description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下： flag 123456789101112131415161">
+<meta property="og:updated_time" content="2018-01-24T12:17:36.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="time">
-<meta name="twitter:description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：   flag 1234567891011121314151">
+<meta name="twitter:description" content="###移动端tap事件发生两次（或多次） ======-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等  解决方式：  -1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下： flag 123456789101112131415161">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -179,9 +179,7 @@
 <p>解决方式：</p>
 </blockquote>
 <p>-1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包<br>-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：</p>
-<blockquote>
- <figure class="highlight plain"><figcaption><span>flag </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt; </span><br><span class="line">``` $(select).on(&apos;tap&apos;, function () &#123;</span><br><span class="line"></span><br><span class="line">  ​                if (!flag) &#123;</span><br><span class="line"></span><br><span class="line"> ​                    flag = true;</span><br><span class="line"></span><br><span class="line"> ​                    count++;</span><br><span class="line"></span><br><span class="line"> ​                    console.log(count);</span><br><span class="line"></span><br><span class="line"> ​                    mui(&apos;#pageSlider&apos;).slider().gotoItem(count);</span><br><span class="line"></span><br><span class="line"> ​                    setTimeout(function () &#123;</span><br><span class="line"></span><br><span class="line"> ​                        flag = false;</span><br><span class="line"></span><br><span class="line"> ​                    &#125;, 300);</span><br><span class="line"></span><br><span class="line"> ​                &#125;</span><br><span class="line"></span><br><span class="line"> ​            &#125;);</span><br></pre></td></tr></table></figure></blockquote>
-
+<figure class="highlight plain"><figcaption><span>flag </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   $(select).on(&apos;tap&apos;, function () &#123;</span><br><span class="line"></span><br><span class="line"> ​                if (!flag) &#123;</span><br><span class="line"></span><br><span class="line">​                    flag = true;</span><br><span class="line"></span><br><span class="line">​                    count++;</span><br><span class="line"></span><br><span class="line">​                    console.log(count);</span><br><span class="line"></span><br><span class="line">​                    mui(&apos;#pageSlider&apos;).slider().gotoItem(count);</span><br><span class="line"></span><br><span class="line">​                    setTimeout(function () &#123;</span><br><span class="line"></span><br><span class="line">​                        flag = false;</span><br><span class="line"></span><br><span class="line">​                    &#125;, 300);</span><br><span class="line"></span><br><span class="line">​                &#125;</span><br><span class="line"></span><br><span class="line">​    &#125;);</span><br></pre></td></tr></table></figure>
       
 
       
