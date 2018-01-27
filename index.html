@@ -151,74 +151,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>title ‘time’</p>
-<p>###移动端tap事件发生两次（或多次）</p>
-<p>======<br>-原因导入了多个有tap事件包，如：MUI.js,MUI.min.js,zepto.js等</p>
-<blockquote>
-<p>解决方式：</p>
-</blockquote>
-<p>-1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包<br>-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：</p>
-<blockquote>
- <figure class="highlight plain"><figcaption><span>flag </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p> ​            $(select).on(‘tap’, function () {</p>
-<p>  ​                if (!flag) {</p>
-<p> ​                    flag = true;</p>
-<p> ​                    count++;</p>
-<p> ​                    console.log(count);</p>
-<p> ​                    mui(‘#pageSlider’).slider().gotoItem(count);</p>
-<p> ​                    setTimeout(function () {</p>
-<p> ​                        flag = false;</p>
-<p> ​                    }, 300);</p>
-<p> ​                }</p>
-<p> ​            });</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/24/test/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -290,19 +222,112 @@
 
 
   
-    <article id="post-time" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/18/time/">time</a>
+      <a class="article-title" href="/2018/01/18/vue/">Vue动画状态的切换</a>
     </h1>
   
 
         
-        <a href="/2018/01/18/time/" class="archive-article-date">
+        <a href="/2018/01/18/vue/" class="archive-article-date">
+  	<time datetime="2018-01-18T07:44:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Vue动画状态的切换有两种方式"><a href="#Vue动画状态的切换有两种方式" class="headerlink" title="Vue动画状态的切换有两种方式"></a>Vue动画状态的切换有两种方式</h2><blockquote>
+<blockquote>
+<p>1.通过类名的操作<br>2.钩子函数中，通过事件</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>1.通过动画中特殊的类名</li>
+</ul>
+<ul>
+<li>特殊状态的类名：v-enter,v-leave-to</li>
+<li>特殊阶段的类名：v-enter-active,v-leave-active</li>
+</ul>
+<p>代码如下：</p>
+<ul>
+<li><p>style代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    /* 通过操作动画中目标元素的特殊状态的类名，来改变目标元素的状态 */</span><br><span class="line">    .v-enter,</span><br><span class="line">     .v-leave-to &#123;</span><br><span class="line">        opacity: 0;</span><br><span class="line">        transform: translateX(100px);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .v-enter-active,</span><br><span class="line">    .v-leave-active &#123;</span><br><span class="line">        transition:all 0.5s ease;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>html代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;transition&gt;</span><br><span class="line">    &lt;h3 v-show=&quot;flag&quot;&gt;11111&lt;/h3&gt;</span><br><span class="line">&lt;/transition&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>2.钩子函数中，通过事件</li>
+</ul>
+<ul>
+<li><p>html代码：在<code>transition</code>中添加不同阶段的事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;transition @before-enter=&quot;beforeEnter&quot; @enter=&quot;enter&quot; @leave=&quot;leave&quot;&gt;</span><br><span class="line">    &lt;h3 v-if=&quot;flag&quot;&gt;12345&lt;/h3&gt;</span><br><span class="line">&lt;/transition&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    beforeEnter(el) &#123;</span><br><span class="line">        el.style.opacity = 0</span><br><span class="line">        el.style.transform = &quot;translateX(100px)&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    enter(el) &#123;</span><br><span class="line">        // 入场动画执行中</span><br><span class="line">        el.offsetWidth</span><br><span class="line">        el.style.opacity = 1</span><br><span class="line">        el.style.transform = &quot;translateX(0px)&quot;</span><br><span class="line">        el.style.transition = &quot;all 1s ease&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    leave(el) &#123;</span><br><span class="line">        el.offsetWidth</span><br><span class="line">        el.style.opacity = 0</span><br><span class="line">        el.style.transform = &quot;translateX(100px)&quot;</span><br><span class="line">        el.style.transition = &quot;all 1s ease&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/18/vue/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-移动端tap事件发生两次或以上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/18/移动端tap事件发生两次或以上/">移动端tap事件发生两次（或多次）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/18/移动端tap事件发生两次或以上/" class="archive-article-date">
   	<time datetime="2018-01-18T07:44:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-18</time>
 </a>
         
@@ -315,8 +340,8 @@
 <blockquote>
 <p>解决方式：</p>
 </blockquote>
-<p>-1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包<br>-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> var flag = false;</span><br><span class="line">   $(select).on(&apos;tap&apos;, function () &#123;</span><br><span class="line"></span><br><span class="line"> ​                if (!flag) &#123;</span><br><span class="line"></span><br><span class="line">​                    flag = true;</span><br><span class="line"></span><br><span class="line">​                    count++;</span><br><span class="line"></span><br><span class="line">​                    console.log(count);</span><br><span class="line"></span><br><span class="line">​                    mui(&apos;#pageSlider&apos;).slider().gotoItem(count);</span><br><span class="line"></span><br><span class="line">​                    setTimeout(function () &#123;</span><br><span class="line"></span><br><span class="line">​                        flag = false;</span><br><span class="line"></span><br><span class="line">​                    &#125;, 300);</span><br><span class="line"></span><br><span class="line">​                &#125;</span><br><span class="line"></span><br><span class="line">​    &#125;);</span><br></pre></td></tr></table></figure>
+<p>-1.当使用的是zepto和MUI时，可以订制一份没有touch事件的zepto包<br>-2.当使用tap事件时，使用setTimeout，让一定事件内只发生一次tap事件，代码如下：<br>aaaaaa<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> var flag = false;</span><br><span class="line">   $(select).on(&apos;tap&apos;, function () &#123;</span><br><span class="line"></span><br><span class="line"> ​                if (!flag) &#123;</span><br><span class="line"></span><br><span class="line">​                    flag = true;</span><br><span class="line"></span><br><span class="line">​                    count++;</span><br><span class="line"></span><br><span class="line">​                    console.log(count);</span><br><span class="line"></span><br><span class="line">​                    mui(&apos;#pageSlider&apos;).slider().gotoItem(count);</span><br><span class="line"></span><br><span class="line">​                    setTimeout(function () &#123;</span><br><span class="line"></span><br><span class="line">​                        flag = false;</span><br><span class="line"></span><br><span class="line">​                    &#125;, 300);</span><br><span class="line"></span><br><span class="line">​                &#125;</span><br><span class="line"></span><br><span class="line">​    &#125;);</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -328,7 +353,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/18/time/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/18/移动端tap事件发生两次或以上/">展开全文 >></a>
         </p>
       
 
